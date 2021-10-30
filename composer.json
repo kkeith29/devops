@@ -1,0 +1,26 @@
+{
+  "name": "kkeith29/devops",
+  "description": "Tools to help with devops",
+  "minimum-stability": "stable",
+  "license": "proprietary",
+  "authors": [
+    {
+      "name": "Kyle Keith",
+      "email": "3694596+kkeith29@users.noreply.github.com"
+    }
+  ],
+  "autoload": {
+    "psr-4": {
+      "App\\": "app"
+    },
+    "files": ["app/helpers.php"]
+  },
+  "require": {
+    "symfony/console": "^5.2",
+    "vlucas/phpdotenv": "^5.3",
+    "symfony/process": "^5.2",
+    "symfony/cache": "^5.2",
+    "monolog/monolog": "^2.2",
+    "symfony/monolog-bridge": "^5.2"
+  }
+}

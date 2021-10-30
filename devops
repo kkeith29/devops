@@ -1,0 +1,28 @@
+#!/usr/bin/env php
+<?php
+
+date_default_timezone_set('UTC');
+
+const PATH_ROOT = __DIR__ . DIRECTORY_SEPARATOR;
+const PATH_CONFIG = PATH_ROOT . 'config'. DIRECTORY_SEPARATOR;
+const PATH_RESOURCES = PATH_ROOT . 'resources' . DIRECTORY_SEPARATOR;
+const PATH_STORAGE = PATH_ROOT . 'storage' . DIRECTORY_SEPARATOR;
+const PATH_VENDOR = PATH_ROOT . 'vendor' . DIRECTORY_SEPARATOR;
+
+require PATH_VENDOR . 'autoload.php';
+
+use App\Commands\DeployCommand;
+use Dotenv\Dotenv;
+use Symfony\Component\Console\Application;
+
+$env_path = PATH_ROOT;
+$env_file = '.env';
+if (file_exists($env_path . DIRECTORY_SEPARATOR . $env_file)) {
+    Dotenv::createImmutable($env_path, $env_file)->load();
+}
+
+$application = new Application();
+
+$application->add(new DeployCommand());
+
+$application->run();
